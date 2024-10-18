@@ -5,6 +5,11 @@ const path = require('path');
 const { createServer } = require('http');
 const WebSocket = require('ws');
 const cors = require('cors');
+const dotenv = require('dotenv')
+
+dotenv.config()
+
+const PORT = process.env.PORT || 4000
 
 const app = express();
 app.use(express.static(path.join(__dirname, '/public')));
@@ -63,6 +68,6 @@ app.post('/message-iframe', (req, res) => {
   }
 });
 
-server.listen(4000, function () {
-  console.log('Servidor escuchando en http://0.0.0.0:4000');
+server.listen(PORT, function () {
+  console.log(`Servidor escuchando en http://0.0.0.0:${PORT}`);
 });
